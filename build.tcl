@@ -1,13 +1,15 @@
 # Set DB to Oracle
 dbset db ora
 
-# Set Oracle connection parameters
+set env(TNS_ADMIN) "[file normalize ../oracle-net]"
+set env(ORACLE_HOME) "/usr/lib/oracle/19.26/client64"
+set env(LD_LIBRARY_PATH) "$env(ORACLE_HOME)/lib"
+
+
 diset connection system_user system
 diset connection system_password $env(ORACLE_SYSTEM_PASSWORD)
-diset connection instance $env(ORACLE_SID)
-diset connection service $env(ORACLE_SERVICE)
-diset connection server $env(ORACLE_HOST)
-diset connection port $env(ORACLE_PORT)
+diset connection instance oralab
+
 
 # Set TPC-C workload parameters
 diset tpcc ora_user tpcc
